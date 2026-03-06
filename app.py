@@ -37,7 +37,6 @@ ONAYLI_KULLANICILAR = [
     "ipekbirisi321@gmail.com"
 ]
 
-# Üniversite Dersleri Listeye Eklendi
 DERS_LISTESI = [
     "🇹🇷 Türkçe", "📐 Matematik", "🏛️ Tarih", "🌍 Coğrafya", "⚖️ Vatandaşlık",
     "🔺 Geometri", "🧠 Eğitim Bilimleri", "⚛️ Fizik", "🧪 Kimya", "🧬 Biyoloji", 
@@ -72,42 +71,55 @@ KRITIK_BILGILER = [
 ]
 
 # =============================================================================
-# 🛑 KURUMSAL / PRESTİJLİ UI/UX TASARIMI
+# 🛑 KURUMSAL / PRESTİJLİ UI/UX TASARIMI (GÖRSEL HATALAR GİDERİLDİ)
 # =============================================================================
 st.set_page_config(page_title="AKADEMİ", page_icon="🏛️", layout="wide", initial_sidebar_state="expanded")
 
 st.markdown("""
+    <meta name="robots" content="noindex, nofollow" />
     <style>
-    .stApp, div[data-testid="stAppViewContainer"], .main { background-color: #f1f5f9 !important; background-image: linear-gradient(rgba(241, 245, 249, 0.92), rgba(241, 245, 249, 0.95)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop') !important; background-size: cover !important; background-position: center !important; background-attachment: fixed !important; color: #0f172a !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; }
-    [data-testid="stSidebar"] { background-color: rgba(255, 255, 255, 0.8) !important; backdrop-filter: blur(12px) !important; border-right: 1px solid rgba(226, 232, 240, 0.8) !important; box-shadow: 2px 0 10px rgba(0,0,0,0.03) !important; }
-    .premium-card { background: rgba(255, 255, 255, 0.98) !important; border-radius: 12px !important; padding: 25px !important; margin-bottom: 20px !important; box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important; border-left: 5px solid #1E3A8A !important; border-top: 1px solid #f1f5f9 !important; border-right: 1px solid #f1f5f9 !important; border-bottom: 1px solid #f1f5f9 !important; transition: all 0.3s ease !important; color: #1e293b !important; }
-    .premium-card:hover { transform: translateY(-2px) !important; box-shadow: 0 8px 25px rgba(0,0,0,0.08) !important; }
-    .premium-card h2 { color: #1E3A8A !important; font-size: 2.5rem !important; margin: 0 !important; font-weight: 800 !important; }
-    .premium-card b { color: #64748b !important; font-size: 0.9rem !important; text-transform: uppercase !important; letter-spacing: 1.2px !important; }
+    .stApp, div[data-testid="stAppViewContainer"], .main { 
+        background-color: #f1f5f9 !important; 
+        background-image: linear-gradient(rgba(241, 245, 249, 0.92), rgba(241, 245, 249, 0.95)), url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1920&auto=format&fit=crop') !important; 
+        background-size: cover !important; background-position: center !important; background-attachment: fixed !important; 
+        color: #0f172a !important; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important; 
+    }
+    [data-testid="stSidebar"] { 
+        background-color: rgba(255, 255, 255, 0.8) !important; 
+        backdrop-filter: blur(12px) !important; 
+        border-right: 1px solid rgba(226, 232, 240, 0.8) !important; 
+    }
+    .premium-card { 
+        background: rgba(255, 255, 255, 0.98) !important; 
+        border-radius: 12px !important; padding: 25px !important; margin-bottom: 20px !important; 
+        box-shadow: 0 4px 15px rgba(0,0,0,0.04) !important; border-left: 5px solid #1E3A8A !important; 
+        color: #1e293b !important; 
+    }
+    .premium-card h2 { color: #1E3A8A !important; font-size: 2.5rem !important; font-weight: 800 !important; }
     
-    /* GİRİŞ KUTULARI VE AÇILIR MENÜ (DROPDOWN) DÜZELTMELERİ */
-    .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div { background-color: #ffffff !important; color: #1e293b !important; border: 1px solid #cbd5e1 !important; border-radius: 8px !important; padding: 10px 15px !important; font-weight: 500 !important; box-shadow: inset 0 1px 2px rgba(0,0,0,0.02) !important; transition: border-color 0.2s !important; }
-    .stTextInput input:focus, .stTextArea textarea:focus, div[data-baseweb="select"] > div:focus-within { border-color: #1E3A8A !important; box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1) !important; }
-    div[data-baseweb="select"] span, div[data-baseweb="select"] div { color: #1e293b !important; }
+    .stTextInput input, .stTextArea textarea, .stNumberInput input, div[data-baseweb="select"] > div { 
+        background-color: #ffffff !important; color: #000000 !important; 
+        border: 1px solid #cbd5e1 !important; border-radius: 8px !important; 
+    }
+    div[data-baseweb="select"] * { color: #000000 !important; font-weight: 600 !important; }
 
-    h1, h2, h3, h4 { color: #0f172a !important; font-weight: 700 !important; letter-spacing: -0.5px !important; }
-    h1 { font-size: 2.6rem !important; color: #0f172a !important; border-bottom: 2px solid #e2e8f0 !important; padding-bottom: 10px !important; margin-bottom: 25px !important; }
+    div.stButton > button { 
+        background: #1E3A8A !important; border: 1px solid #1e3a8a !important; 
+        border-radius: 6px !important; padding: 0.6rem 1.5rem !important; 
+    }
+    div.stButton > button * { color: #ffffff !important; font-weight: 600 !important; text-transform: uppercase !important; }
     
-    /* BUTON TASARIMLARI VE YAZI RENGİ ZORLAMASI */
-    div.stButton > button { background: #1E3A8A !important; border: 1px solid #1e3a8a !important; border-radius: 6px !important; padding: 0.6rem 1.5rem !important; box-shadow: 0 2px 4px rgba(30, 58, 138, 0.2) !important; transition: all 0.2s ease !important; width: 100% !important; }
-    div.stButton > button * { color: #ffffff !important; font-weight: 600 !important; text-transform: uppercase !important; letter-spacing: 0.5px !important; }
-    div.stButton > button:hover { background: #1e40af !important; box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3) !important; transform: translateY(-1px) !important; }
+    .timer-card { 
+        background: #ffffff; padding: 15px; border-radius: 10px; text-align: center; 
+        border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); margin-bottom: 15px; 
+    }
+    .timer-card b { color: #b91c1c !important; font-size: 22px !important; font-weight: 800 !important; display: block; }
+    .timer-card p { color: #475569 !important; font-size: 14px !important; font-weight: 600 !important; margin: 0; }
     
-    .timer-card { background: #ffffff; padding: 15px; border-radius: 10px; text-align: center; border: 1px solid #e2e8f0; box-shadow: 0 2px 5px rgba(0,0,0,0.02); margin-bottom: 15px; }
-    .timer-card b { color: #b91c1c !important; font-size: 22px !important; font-weight: 800 !important; display: block; margin-top: 5px;}
-    .timer-card p { color: #475569 !important; margin: 0 !important; font-size: 14px !important; font-weight: 600 !important;}
-    .stTabs [data-baseweb="tab-list"] { background-color: transparent; border-bottom: 2px solid #e2e8f0; gap: 20px; padding-bottom: 0px; }
-    .stTabs [data-baseweb="tab"] { font-size: 15px !important; font-weight: 600 !important; color: #64748b !important; background: transparent; border: none !important; padding: 10px 5px !important; }
-    .stTabs [aria-selected="true"] { color: #1E3A8A !important; border-bottom: 3px solid #1E3A8A !important; background: transparent !important; box-shadow: none !important;}
-    p, li, .stMarkdown { color: #334155 !important; font-size: 1.05rem !important; }
-    
-    /* GÖZE SOKMAYAN KURUCU İMZASI */
-    .kurucu-imza { position: fixed; bottom: 10px; right: 15px; color: #475569; opacity: 0.2; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; z-index: 9999; pointer-events: none; }
+    .kurucu-imza { 
+        position: fixed; bottom: 10px; right: 15px; color: #475569; opacity: 0.1; 
+        font-size: 10px; font-weight: 700; z-index: 9999; pointer-events: none; 
+    }
     </style>
     <div class="kurucu-imza">KURUCU/DEVELOPER TAHSİN CAN ÖCAL</div>
     """, unsafe_allow_html=True)
@@ -132,59 +144,30 @@ def veritabanini_kaydet(veri):
     except Exception as e:
         st.error(f"Veri kaydetme hatası: {e}")
 
-# --- KURUMSAL EĞİTİM KOÇU KRONOMETRESİ (POMODORO) ---
+# --- KRONOMETRE ---
 def egitim_kocu_kronometresi():
     html_kodu = """
-    <div style="background: #1E3A8A; background-image: linear-gradient(135deg, #1E3A8A 0%, #0F172A 100%); padding: 35px; border-radius: 12px; color: white; text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; box-shadow: 0 10px 25px rgba(15, 23, 42, 0.2); margin-bottom: 25px; position: relative; overflow: hidden; border: 1px solid #334155;">
-        <h3 style="margin-top: 0; font-size: 20px; font-weight: 600; text-transform: uppercase; color: #e2e8f0; letter-spacing: 1px;">Kurumsal Odaklanma Modülü</h3>
-        <div id="timerDisplay" style="font-size: 70px; font-weight: 700; margin: 10px 0; font-variant-numeric: tabular-nums; color: #ffffff; letter-spacing: -2px;">25:00</div>
-        <p id="statusText" style="font-size: 16px; margin-bottom: 25px; font-weight: 400; color: #cbd5e1; background: rgba(255,255,255,0.1); display: inline-block; padding: 8px 20px; border-radius: 6px;">Lütfen çalışma seansınızı başlatın.</p>
-        <br>
-        <button onclick="startTimer(25, 'Çalışma')" style="background: #ffffff; border: none; padding: 12px 25px; border-radius: 6px; color: #1E3A8A; font-weight: 700; font-size: 14px; cursor: pointer; margin: 5px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: all 0.2s; text-transform: uppercase;">▶ 25 DK Odaklan</button>
-        <button onclick="startTimer(5, 'Mola')" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 12px 25px; border-radius: 6px; color: #ffffff; font-weight: 600; font-size: 14px; cursor: pointer; margin: 5px; transition: all 0.2s; text-transform: uppercase;">⏸ 5 DK Mola</button>
-        <button onclick="resetTimer()" style="background: transparent; border: 1px solid rgba(255,255,255,0.3); padding: 12px 25px; border-radius: 6px; color: #ffffff; font-weight: 600; font-size: 14px; cursor: pointer; margin: 5px; transition: all 0.2s; text-transform: uppercase;">🔄 Sıfırla</button>
-
-        <div id="modalOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15, 23, 42, 0.85); z-index:9999; justify-content:center; align-items:center; backdrop-filter: blur(5px);">
-            <div style="background: #ffffff; color: #0f172a; padding: 50px 40px; border-radius: 12px; text-align: center; max-width: 600px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); border-top: 5px solid #1E3A8A;">
-                <h2 id="modalTitle" style="color: #1E3A8A; font-size: 32px; margin-bottom: 15px; font-weight: 800; text-transform: uppercase;">Seans Tamamlandı</h2>
-                <p id="modalDesc" style="font-size: 18px; color: #475569; line-height: 1.6; margin-bottom: 35px; font-weight: 400;">Belirlenen süreyi başarıyla tamamladınız. Lütfen yönergelere göre hareket ediniz.</p>
-                <button onclick="closeModal()" style="background: #1E3A8A; color: white; border: none; padding: 15px 40px; border-radius: 6px; font-size: 16px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 6px rgba(30, 58, 138, 0.2); text-transform: uppercase;">Onayla ve Kapat</button>
-            </div>
-        </div>
-
+    <div style="background: #1E3A8A; padding: 35px; border-radius: 12px; color: white; text-align: center; font-family: sans-serif;">
+        <h3 style="margin-top: 0; font-size: 20px; text-transform: uppercase;">Akademik Odaklanma Modülü</h3>
+        <div id="timerDisplay" style="font-size: 70px; font-weight: 700; margin: 10px 0;">25:00</div>
+        <p id="statusText" style="font-size: 16px; margin-bottom: 25px; color: #cbd5e1;">Lütfen seansı başlatın.</p>
+        <button onclick="startTimer(25, 'Çalışma')" style="background: #ffffff; border: none; padding: 12px 25px; border-radius: 6px; color: #1E3A8A; font-weight: 700; cursor: pointer; margin: 5px;">25 DK ODAKLAN</button>
+        <button onclick="startTimer(5, 'Mola')" style="background: rgba(255,255,255,0.15); border: 1px solid white; padding: 12px 25px; border-radius: 6px; color: white; cursor: pointer; margin: 5px;">5 DK MOLA</button>
+        <button onclick="resetTimer()" style="background: transparent; border: 1px solid white; padding: 12px 25px; border-radius: 6px; color: white; cursor: pointer; margin: 5px;">SIFIRLA</button>
         <script>
             let timerInterval;
             let timeLeft = 25 * 60;
-            let currentMode = "Çalışma";
             function updateDisplay() {
-                let m = Math.floor(timeLeft / 60);
-                let s = timeLeft % 60;
+                let m = Math.floor(timeLeft / 60); let s = timeLeft % 60;
                 document.getElementById('timerDisplay').innerText = (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
             }
-            function showModal(mode) {
-                if(mode === 'Çalışma') {
-                    document.getElementById('modalTitle').innerText = "Odaklanma Seansı Bitti";
-                    document.getElementById('modalDesc').innerText = "25 dakikalık seans bitti. 5 dakika mola verin.";
-                } else {
-                    document.getElementById('modalTitle').innerText = "Mola Süresi Doldu";
-                    document.getElementById('modalDesc').innerText = "Dinlenme bitti. Masaya dönme vakti!";
-                }
-                document.getElementById('modalOverlay').style.display = 'flex';
-            }
-            function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
             function startTimer(minutes, mode) {
-                clearInterval(timerInterval);
-                currentMode = mode;
-                timeLeft = minutes * 60;
-                document.getElementById('statusText').innerHTML = mode + " seansı aktif.";
+                clearInterval(timerInterval); timeLeft = minutes * 60;
+                document.getElementById('statusText').innerText = mode + " seansı aktif.";
                 updateDisplay();
                 timerInterval = setInterval(() => {
-                    timeLeft--;
-                    updateDisplay();
-                    if (timeLeft <= 0) {
-                        clearInterval(timerInterval);
-                        showModal(currentMode);
-                    }
+                    timeLeft--; updateDisplay();
+                    if (timeLeft <= 0) { clearInterval(timerInterval); alert(mode + " bitti!"); }
                 }, 1000);
             }
             function resetTimer() { clearInterval(timerInterval); timeLeft = 25 * 60; updateDisplay(); }
@@ -194,41 +177,33 @@ def egitim_kocu_kronometresi():
     components.html(html_kodu, height=330)
 
 # --- SESSION DURUMU ---
-if 'db' not in st.session_state:
-    st.session_state.db = veritabanini_yukle()
-if 'aktif_kullanici' not in st.session_state:
-    st.session_state.aktif_kullanici = None
-if 'sinav_durumu' not in st.session_state:
-    st.session_state.sinav_durumu = "bekliyor"
-if 'sinav_verisi' not in st.session_state:
-    st.session_state.sinav_verisi = None
-if 'login_time' not in st.session_state:
-    st.session_state.login_time = time.time()
+if 'db' not in st.session_state: st.session_state.db = veritabanini_yukle()
+if 'aktif_kullanici' not in st.session_state: st.session_state.aktif_kullanici = None
+if 'sinav_durumu' not in st.session_state: st.session_state.sinav_durumu = "bekliyor"
+if 'sinav_verisi' not in st.session_state: st.session_state.sinav_verisi = None
+if 'login_time' not in st.session_state: st.session_state.login_time = time.time()
 
-# --- AI CONNECT ---
+# --- AI CONNECT (HATASIZ MODÜL) ---
 kullanilacak_model = "gemini-1.5-flash" 
 if SISTEM_API_ANAHTARI:
     try:
         genai.configure(api_key=SISTEM_API_ANAHTARI)
-        aktif_modeller = [m.name.replace("models/", "") for m in genai.list_models() if 'generateContent' in m.supported_generation_methods]
-        if aktif_modeller:
-            if "gemini-1.5-flash" in aktif_modeller: kullanilacak_model = "gemini-1.5-flash"
-            elif "gemini-1.5-flash-latest" in aktif_modeller: kullanilacak_model = "gemini-1.5-flash-latest"
-            elif "gemini-pro" in aktif_modeller: kullanilacak_model = "gemini-pro"
-            else: kullanilacak_model = aktif_modeller[0] 
-    except Exception as e:
-        pass 
+        # Mevcut modelleri listele ve en uygun olanı bul (404 hatasını önler)
+        available_models = [m.name.replace("models/", "") for m in genai.list_models()]
+        if "gemini-1.5-flash" in available_models: kullanilacak_model = "gemini-1.5-flash"
+        elif "gemini-1.5-flash-latest" in available_models: kullanilacak_model = "gemini-1.5-flash-latest"
+        elif "gemini-pro" in available_models: kullanilacak_model = "gemini-pro"
+    except: pass 
 
-# --- AUTHENTICATION FLOW ---
+# --- GİRİŞ / KAYIT AKIŞI ---
 if st.session_state.aktif_kullanici is None:
-    st.title("MUSTİK AKADEMİ YÖNETİM SİSTEMİ")
+    st.title("AKADEMİ YÖNETİM SİSTEMİ")
     t1, t2 = st.tabs(["🔐 Sisteme Giriş", "📝 Davetiyeli Kayıt"])
     
     with t1:
         c, _ = st.columns([1, 2])
         with c:
-            st.markdown("<div style='background:white; padding:25px; border-radius:10px; border:1px solid #e2e8f0; box-shadow:0 4px 10px rgba(0,0,0,0.05);'>", unsafe_allow_html=True)
-            st.markdown("<h3 style='color:#1E3A8A; margin-top:0;'>🛡️ Kullanıcı Girişi</h3>", unsafe_allow_html=True)
+            st.markdown("<div class='premium-card'>🛡️ <b>Kullanıcı Girişi</b>", unsafe_allow_html=True)
             m_in = st.text_input("Kurumsal E-Posta:", key="l_m")
             p_in = st.text_input("Güvenlik Şifresi:", type="password", key="l_p")
             if st.button("Sisteme Giriş Yap", key="l_btn"):
@@ -237,31 +212,27 @@ if st.session_state.aktif_kullanici is None:
                         st.session_state.aktif_kullanici = m_in
                         st.session_state.login_time = time.time()
                         st.rerun()
-                    else: st.error("Girdiğiniz şifre hatalı!")
-                else: st.error("Bu e-posta sistemde kayıtlı değil.")
+                    else: st.error("Hatalı şifre!")
+                else: st.error("Bu e-posta kayıtlı değil.")
             st.markdown("</div>", unsafe_allow_html=True)
             
     with t2:
         c, _ = st.columns([1, 2])
         with c:
-            st.markdown("<div style='background:white; padding:25px; border-radius:10px; border:1px solid #e2e8f0; box-shadow:0 4px 10px rgba(0,0,0,0.05);'>", unsafe_allow_html=True)
-            st.markdown("<h3 style='color:#1E3A8A; margin-top:0;'>📝 Yeni Kayıt</h3>", unsafe_allow_html=True)
+            st.markdown("<div class='premium-card'>📝 <b>Yeni Kayıt</b>", unsafe_allow_html=True)
             n_in = st.text_input("Ad ve Soyad:", key="r_n")
             m_in = st.text_input("Onaylı E-Posta:", key="r_m")
             p_in = st.text_input("Şifre Belirleyin:", type="password", key="r_p")
             i_in = st.text_input("Gizli Davet Kodu:", type="password", key="r_i")
             if st.button("Kaydı Tamamla", key="r_btn"):
-                if m_in not in ONAYLI_KULLANICILAR: st.error("Bu e-posta adresi onaylı değil!")
-                elif i_in != GIZLI_DAVET_KODU: st.error("Gizli davet kodu hatalı!")
-                elif m_in in st.session_state.db.get("kullanicilar", {}): st.error("Bu hesap zaten kayıtlı.")
+                if m_in not in ONAYLI_KULLANICILAR: st.error("E-posta onaylı değil!")
+                elif i_in != GIZLI_DAVET_KODU: st.error("Kod hatalı!")
                 else:
                     if "kullanicilar" not in st.session_state.db: st.session_state.db["kullanicilar"] = {}
                     st.session_state.db["kullanicilar"][m_in] = {
-                        "isim": n_in, "sifre": p_in, "sayaclar": [], 
-                        "kutuphane": [], "hedefler": "", "activity_log": [],
-                        "stats": {"soru": 0, "dogru": 0, "yanlis": 0, "konu": 0, "dakika": 0},
+                        "isim": n_in, "sifre": p_in, "stats": {"soru": 0, "dogru": 0, "yanlis": 0, "konu": 0, "dakika": 0},
                         "ders_programi": {g: "" for g in ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]},
-                        "calisma_plani": [], "dersler": [], "ozel_sinavlar": []
+                        "calisma_plani": [], "kutuphane": [], "ozel_sinavlar": []
                     }
                     veritabanini_kaydet(st.session_state.db)
                     st.success("Kayıt başarılı! Giriş yapabilirsiniz.")
@@ -269,140 +240,122 @@ if st.session_state.aktif_kullanici is None:
 
 else:
     user_data = st.session_state.db["kullanicilar"][st.session_state.aktif_kullanici]
+    if "ozel_sinavlar" not in user_data: user_data["ozel_sinavlar"] = []
     
-    # Eksik alanları tamamla (ozel_sinavlar dahil)
-    eksik_alanlar = {
-        "stats": {"soru": 0, "dogru": 0, "yanlis": 0, "konu": 0, "dakika": 0},
-        "activity_log": [], "ders_programi": {g: "" for g in ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]},
-        "calisma_plani": [], "hedefler": "", "dersler": [], "kutuphane": [], "sayaclar": [], "ozel_sinavlar": []
-    }
-    for key, val in eksik_alanlar.items():
-        if key not in user_data: user_data[key] = val
-            
+    # Süre Takibi
     now = time.time()
     elapsed = int((now - st.session_state.login_time) / 60)
     if elapsed > 0:
-        user_data["stats"]["dakika"] += elapsed
+        if "stats" in user_data: user_data["stats"]["dakika"] += elapsed
         st.session_state.login_time = now
         veritabanini_kaydet(st.session_state.db)
 
     # --- SIDEBAR ---
     with st.sidebar:
-        rol_etiketi = '<p style="color:#64748b; font-size:12px; font-weight:700; text-transform:uppercase; margin-bottom:5px;">YETKİLİ PROFİL</p>' if st.session_state.aktif_kullanici == "tahsincanocal@gmail.com" else ''
-        st.markdown(f"<div style='background:#ffffff; padding:20px; border-radius:10px; border:1px solid #e2e8f0; text-align:center;'>{rol_etiketi}<h3 style='color:#1E3A8A; font-weight:800; margin:0;'>{user_data['isim']}</h3></div>", unsafe_allow_html=True)
-        st.divider()
+        yetki = '<p style="color:#64748b; font-size:12px; font-weight:700;">YETKİLİ PROFİL</p>' if st.session_state.aktif_kullanici == "tahsincanocal@gmail.com" else ''
+        st.markdown(f"<div style='text-align:center;'>{yetki}<h3>{user_data['isim']}</h3></div>", unsafe_allow_html=True)
         st.metric("Çalışılan Süre", f"{user_data['stats']['dakika']} Dk")
         st.divider()
-        st.markdown("### 📌 Yönetim Notu")
-        st.info(random.choice(MOTIVASYON_SOZLERI))
         if st.button("Oturumu Kapat"):
             st.session_state.aktif_kullanici = None
             st.rerun()
 
-    st.title(f"MUSTİK AKADEMİ'ye Hoş Geldiniz, {user_data['isim'].split()[0]}")
+    st.title(f"AKADEMİ'ye Hoş Geldiniz, {user_data['isim'].split()[0]}")
     egitim_kocu_kronometresi()
     
-    # --- SINAV SAYAÇLARI (OSYM + KULLANICI ÖZEL) ---
-    st.markdown("<h4 style='color:#334155;'>Sınav Takvimi</h4>", unsafe_allow_html=True)
-    
-    # Sabit sınavlar ve Kullanıcı sınavlarını birleştir
-    tum_sinavlar = list(OSYM_SINAVLARI.items())
+    # --- DİNAMİK SINAV TAKVİMİ (ÜNİVERSİTE DERSLERİ DAHİL) ---
+    st.subheader("🗓️ Sınav Takvimi")
+    active_exams = list(OSYM_SINAVLARI.items())
     for item in user_data.get("ozel_sinavlar", []):
         try:
             d_obj = datetime.strptime(item["tarih"], "%Y-%m-%d").date()
-            tum_sinavlar.append((item["ad"], d_obj))
+            active_exams.append((item["ad"], d_obj))
         except: pass
-    
-    timer_cols = st.columns(len(tum_sinavlar))
-    for i, (name, s_date) in enumerate(tum_sinavlar):
-        days_left = (s_date - date.today()).days
-        if days_left >= 0:
-            with timer_cols[i % len(timer_cols)]:
-                st.markdown(f'<div class="timer-card"><p>{name}</p><b>{days_left} GÜN</b></div>', unsafe_allow_html=True)
+        
+    tcols = st.columns(len(active_exams) if active_exams else 1)
+    for i, (name, s_date) in enumerate(active_exams):
+        days = (s_date - date.today()).days
+        if days >= 0:
+            with tcols[i % len(tcols)]:
+                st.markdown(f'<div class="timer-card"><p>{name}</p><b>{days} GÜN</b></div>', unsafe_allow_html=True)
 
-    tabs = st.tabs(["Gelişim Raporu", "Yapay Zeka Destek", "Değerlendirme Sınavı", "Ders Programı", "Görev Planlayıcı", "Akademik Arşiv"])
+    tabs = st.tabs(["Rapor", "AI Asistan", "Sınav Merkezi", "Ders Programı", "Görevler", "Arşiv"])
     
-    # TAB 1: DURUM VE ÖZEL SINAV EKLEME
+    # --- TAB 1: RAPOR VE ÜNİVERSİTE SINAV YÖNETİMİ ---
     with tabs[0]:
-        st.markdown("### Akademik İstatistikler")
         c1, c2, c3, c4 = st.columns(4)
         c1.markdown(f"<div class='premium-card'><b>Toplam Soru</b><br><h2>{user_data['stats']['soru']}</h2></div>", unsafe_allow_html=True)
         c2.markdown(f"<div class='premium-card'><b>Doğru / Yanlış</b><br><h2>{user_data['stats']['dogru']} <span style='color:#b91c1c;'>/ {user_data['stats']['yanlis']}</span></h2></div>", unsafe_allow_html=True)
         c3.markdown(f"<div class='premium-card'><b>Konu</b><br><h2>{user_data['stats']['konu']}</h2></div>", unsafe_allow_html=True)
-        c4.markdown(f"<div class='premium-card'><b>Süre</b><br><h2>{user_data['stats']['dakika']} dk</h2></div>", unsafe_allow_html=True)
+        c4.markdown(f"<div class='premium-card'><b>Dakika</b><br><h2>{user_data['stats']['dakika']}</h2></div>", unsafe_allow_html=True)
         
         st.divider()
         st.subheader("🎓 Üniversite Sınavlarımı Yönet")
-        st.info("Kendi vize, final veya diğer özel sınavlarını buraya ekle, en üstteki takvimde otomatik görünsün.")
-        
+        st.info("Kendi vize, final veya sunum tarihlerini ekle, en üstteki geri sayım panelinde görünsün.")
         sm1, sm2 = st.columns([1, 2])
         with sm1:
-            with st.form("ozel_sinav_ekle"):
-                s_ad = st.text_input("Sınav Adı:", placeholder="Örn: Kalkülüs Vizesi")
-                s_tar = st.date_input("Sınav Tarihi:", min_value=date.today())
-                if st.form_submit_button("Takvime Ekle"):
-                    if s_ad:
-                        user_data["ozel_sinavlar"].append({"ad": s_ad, "tarih": str(s_tar)})
+            with st.form("ozel_sinav_form"):
+                u_ad = st.text_input("Sınav Adı:", placeholder="Örn: Psikoloji Vizesi")
+                u_tar = st.date_input("Tarih:", min_value=date.today())
+                if st.form_submit_button("Takvime İşle"):
+                    if u_ad:
+                        user_data["ozel_sinavlar"].append({"ad": u_ad, "tarih": str(u_tar)})
                         veritabanini_kaydet(st.session_state.db)
                         st.success("Eklendi!")
                         st.rerun()
         with sm2:
-            st.write("**Ekli Sınavların:**")
+            st.write("**Ekli Üniversite Sınavların:**")
             for idx, ex in enumerate(user_data["ozel_sinavlar"]):
-                sc1, sc2 = st.columns([4, 1])
-                sc1.write(f"📌 {ex['ad']} ({ex['tarih']})")
-                if sc2.button("Sil", key=f"del_ex_{idx}"):
-                    user_data["ozel_sinavlar"].pop(idx)
-                    veritabanini_kaydet(st.session_state.db)
-                    st.rerun()
+                cx1, cx2 = st.columns([4, 1])
+                cx1.write(f"📌 {ex['ad']} ({ex['tarih']})")
+                if cx2.button("Sil", key=f"del_ex_{idx}"):
+                    user_data["ozel_sinavlar"].pop(idx); veritabanini_kaydet(st.session_state.db); st.rerun()
 
-    # TAB 2: AI 
+    # --- TAB 2: AI ASİSTAN ---
     with tabs[1]:
         st.subheader("Akıllı Ders Asistanı")
         ai_c1, ai_c2 = st.columns([1, 2])
-        ai_d = ai_c1.selectbox("Ders Kategorisi:", DERS_LISTESI, key="ai_lesson")
-        ai_i = ai_c1.radio("İşlem Türü:", ["Konu Özeti Oluştur", "Detaylı Anlatım Sağla", "Örnek Soru Hazırla"], key="ai_task")
-        ai_k = ai_c2.text_area("Konu veya Soru:", key="ai_content", height=150)
-        
-        if ai_c2.button("Sorguyu Başlat") and ai_k:
-            with st.spinner("İşleniyor..."):
+        ders = ai_c1.selectbox("Ders Seçimi:", DERS_LISTESI, key="ai_lesson")
+        gorev = ai_c1.radio("İşlem:", ["Özetle", "Anlat", "Soru Hazırla"])
+        konu = ai_c2.text_area("İncelenecek Konu:", placeholder="Örn: Diferansiyel Denklemler veya Osmanlı Duraklama...")
+        if ai_c2.button("Sorgula") and konu:
+            with st.spinner("Analiz yapılıyor..."):
                 try:
                     model = genai.GenerativeModel(kullanilacak_model)
-                    res = model.generate_content(f"Ders: {ai_d}. Konu: {ai_k}. {ai_i} yap.").text
-                    user_data["stats"]["konu"] += 1
-                    user_data["kutuphane"].append({"tarih": str(date.today()), "ders": ai_d, "baslik": ai_k[:30], "icerik": res})
-                    veritabanini_kaydet(st.session_state.db)
+                    res = model.generate_content(f"Ders: {ders}. Konu: {konu}. {gorev} yap.").text
                     st.markdown(res)
-                except Exception as e: st.error(f"Hata: {e}")
+                    user_data["stats"]["konu"] += 1
+                    user_data["kutuphane"].append({"tarih": str(date.today()), "baslik": konu[:30], "icerik": res})
+                    veritabanini_kaydet(st.session_state.db)
+                except Exception as e: st.error(f"Sistem Hatası: {e}")
 
-    # TAB 3: SINAV
+    # --- TAB 3: SINAV MERKEZİ ---
     with tabs[2]:
         if st.session_state.sinav_durumu == "bekliyor":
-            st.subheader("Değerlendirme Modülü")
-            ex_d = st.selectbox("Ders:", DERS_LISTESI, key="ex_lesson")
-            ex_s = st.slider("Soru Miktarı:", 5, 20, 10)
-            ex_k = st.text_input("Konu Filtresi:", placeholder="Tüm üniteler için boş bırakın.")
-            if st.button("Testi Başlat"):
+            st.subheader("Yeni Sınav")
+            ex_ders = st.selectbox("Ders:", DERS_LISTESI, key="ex_lesson")
+            ex_sayi = st.slider("Soru Sayısı:", 5, 20, 10)
+            if st.button("Sınavı Başlat"):
                 with st.spinner("Sorular hazırlanıyor..."):
-                    model = genai.GenerativeModel(kullanilacak_model)
-                    p = f"{ex_d} dersi {ex_k} konusu için {ex_s} adet test sorusu hazırlayabilir misin? JSON formatında ver: [{{'soru':'...','secenekler':['A)','B)','C)','D)','E)'],'cevap':'A)'}}]"
-                    r = model.generate_content(p).text
-                    m = re.search(r'\[.*\]', r, re.DOTALL)
-                    if m:
-                        st.session_state.sinav_verisi = {"sorular": json.loads(m.group(0)), "ders": ex_d}
-                        st.session_state.sinav_durumu = "cozuyor"
-                        st.rerun()
+                    try:
+                        model = genai.GenerativeModel(kullanilacak_model)
+                        p = f"{ex_ders} için {ex_sayi} test sorusu. JSON: [{{'soru':'...','secenekler':['A)','B)','C)','D)','E)'],'cevap':'A)'}}]"
+                        r = model.generate_content(p).text
+                        m = re.search(r'\[.*\]', r, re.DOTALL)
+                        if m:
+                            st.session_state.sinav_verisi = {"sorular": json.loads(m.group(0)), "ders": ex_ders}
+                            st.session_state.sinav_durumu = "cozuyor"; st.rerun()
+                    except: st.error("AI şu an meşgul, tekrar dene.")
         elif st.session_state.sinav_durumu == "cozuyor":
             v = st.session_state.sinav_verisi
-            with st.form("exam_form"):
+            with st.form("ex_form"):
                 ans = {}
                 for i, q in enumerate(v["sorular"]):
                     st.write(f"**Soru {i+1}:** {q['soru']}")
-                    ans[i] = st.radio("Seçenekler:", q["secenekler"], index=None, key=f"q_{i}", label_visibility="collapsed")
-                if st.form_submit_button("Sınavı Tamamla"):
+                    ans[i] = st.radio("Seç:", q["secenekler"], index=None, key=f"q_{i}", label_visibility="collapsed")
+                if st.form_submit_button("BİTİR"):
                     st.session_state.sinav_verisi["cevaplar"] = ans
-                    st.session_state.sinav_durumu = "bitti"
-                    st.rerun()
+                    st.session_state.sinav_durumu = "bitti"; st.rerun()
         elif st.session_state.sinav_durumu == "bitti":
             v = st.session_state.sinav_verisi
             d, y = 0, 0
@@ -410,51 +363,30 @@ else:
                 if v["cevaplar"].get(i) == q["cevap"]: d += 1
                 else: y += 1
             user_data["stats"]["soru"] += len(v["sorular"])
-            user_data["stats"]["dogru"] += d
-            user_data["stats"]["yanlis"] += y
-            st.success(f"Sonuç: {d} Doğru / {y} Yanlış")
-            if st.button("Yeni Sınav"):
-                st.session_state.sinav_durumu = "bekliyor"
-                st.rerun()
+            user_data["stats"]["dogru"] += d; user_data["stats"]["yanlis"] += y
+            st.success(f"Sonuç: {d} Doğru / {y} Yanlış"); veritabanini_kaydet(st.session_state.db)
+            if st.button("Yeni Sınav"): st.session_state.sinav_durumu = "bekliyor"; st.rerun()
 
-    # TAB 4: DERS PROGRAMI
+    # --- TAB 4 & 5 & 6 (PROGRAM, GÖREVLER, ARŞİV) ---
     with tabs[3]:
-        st.subheader("Haftalık Akademik Takvim")
-        cols = st.columns(7)
+        pcols = st.columns(7)
         gunler = ["Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi", "Pazar"]
         for i, gun in enumerate(gunler):
-            user_data["ders_programi"][gun] = cols[i].text_area(gun, value=user_data["ders_programi"].get(gun, ""), height=250)
-        if st.button("Takvimi Kaydet"):
-            veritabanini_kaydet(st.session_state.db)
-            st.success("Kaydedildi.")
+            user_data["ders_programi"][gun] = pcols[i].text_area(gun, user_data["ders_programi"].get(gun, ""), height=250)
+        if st.button("Programı Kaydet"): veritabanini_kaydet(st.session_state.db); st.success("Kaydedildi.")
 
-    # TAB 5: PLAN
     with tabs[4]:
-        st.subheader("Günlük Görev Yöneticisi")
-        n_t = st.text_input("Yeni görev:")
-        if st.button("Listeye Ekle") and n_t:
-            user_data["calisma_plani"].append({"task": n_t, "done": False})
-            veritabanini_kaydet(st.session_state.db)
-            st.rerun()
-        for i, item in enumerate(user_data["calisma_plani"]):
-            cc1, cc2 = st.columns([10, 1])
-            v = cc1.checkbox(item["task"], value=item["done"], key=f"check_{i}")
-            if v != item["done"]:
-                user_data["calisma_plani"][i]["done"] = v
-                veritabanini_kaydet(st.session_state.db)
-                st.rerun()
-            if cc2.button("Sil", key=f"del_{i}"):
-                user_data["calisma_plani"].pop(i)
-                veritabanini_kaydet(st.session_state.db)
-                st.rerun()
+        nt = st.text_input("Yeni Görev:"); 
+        if st.button("Ekle") and nt:
+            user_data["calisma_plani"].append({"task": nt, "done": False}); veritabanini_kaydet(st.session_state.db); st.rerun()
+        for i, task in enumerate(user_data["calisma_plani"]):
+            c1, c2 = st.columns([10, 1])
+            v = c1.checkbox(task["task"], task["done"], key=f"t_{i}")
+            if v != task["done"]: user_data["calisma_plani"][i]["done"] = v; veritabanini_kaydet(st.session_state.db); st.rerun()
+            if c2.button("🗑️", key=f"d_{i}"): user_data["calisma_plani"].pop(i); veritabanini_kaydet(st.session_state.db); st.rerun()
 
-    # TAB 6: ARŞİV
     with tabs[5]:
-        st.subheader("Akademik Arşiv")
         for i, item in enumerate(reversed(user_data["kutuphane"])):
-            with st.expander(f"📄 {item['tarih']} | {item.get('ders', 'Genel')} | {item.get('baslik', '...')}"):
+            with st.expander(f"📄 {item['tarih']} - {item['baslik']}"):
                 st.markdown(item["icerik"])
-                if st.button("Sil", key=f"arch_{i}"):
-                    user_data["kutuphane"].remove(item)
-                    veritabanini_kaydet(st.session_state.db)
-                    st.rerun()
+                if st.button("Sil", key=f"arch_{i}"): user_data["kutuphane"].remove(item); veritabanini_kaydet(st.session_state.db); st.rerun()
