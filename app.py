@@ -37,7 +37,7 @@ ONAYLI_KULLANICILAR = [
     "ipekbirisi321@gmail.com"
 ]
 
-# Üniversite dersleri seçeneği listeye eklendi
+# Üniversite dersleri seçeneği eklendi
 DERS_LISTESI = [
     "🇹🇷 Türkçe", "📐 Matematik", "🏛️ Tarih", "🌍 Coğrafya", "⚖️ Vatandaşlık",
     "🔺 Geometri", "🧠 Eğitim Bilimleri", "⚛️ Fizik", "🧪 Kimya", "🧬 Biyoloji", 
@@ -72,7 +72,7 @@ KRITIK_BILGILER = [
 ]
 
 # =============================================================================
-# 🛑 KURUMSAL / PRESTİJLİ UI/UX TASARIMI (HATASIZ VE TEMİZ)
+# 🛑 KURUMSAL / PRESTİJLİ UI/UX TASARIMI
 # =============================================================================
 st.set_page_config(page_title="AKADEMİ", page_icon="🏛️", layout="wide", initial_sidebar_state="expanded")
 
@@ -90,7 +90,6 @@ st.markdown("""
         background-color: rgba(255, 255, 255, 0.8) !important; 
         backdrop-filter: blur(12px) !important; 
         border-right: 1px solid rgba(226, 232, 240, 0.8) !important; 
-        box-shadow: 2px 0 10px rgba(0,0,0,0.03) !important; 
     }
     .premium-card { 
         background: rgba(255, 255, 255, 0.98) !important; 
@@ -186,7 +185,6 @@ def egitim_kocu_kronometresi():
             }
             function showModal(mode) {
                 document.getElementById('modalTitle').innerText = mode === 'Çalışma' ? "ODAKLANMA BİTTİ" : "MOLA BİTTİ";
-                document.getElementById('modalDesc').innerText = mode === 'Çalışma' ? "Harika bir seanstı. Şimdi 5 dakika mola verin." : "Dinlenme bitti. Tekrar masaya dönme zamanı!";
                 document.getElementById('modalOverlay').style.display = 'flex';
             }
             function closeModal() { document.getElementById('modalOverlay').style.display = 'none'; }
@@ -272,7 +270,7 @@ if st.session_state.aktif_kullanici is None:
 else:
     user_data = st.session_state.db["kullanicilar"][st.session_state.aktif_kullanici]
     
-    # Yeni özellikler için veri yapısı kontrolü (Migration)
+    # Üniversite sınavları için veri yapısı kontrolü
     if "ozel_sinavlar" not in user_data:
         user_data["ozel_sinavlar"] = []
     
@@ -294,19 +292,19 @@ else:
     st.title(f"Hoş Geldiniz, {user_data['isim'].split()[0]}")
     egitim_kocu_kronometresi()
     
-    # --- SINAV GERİ SAYIM MERKEZİ ---
+    # --- SINAV TAKVİMİ (DİNAMİK) ---
     st.subheader("🗓️ Sınav Takvimi")
     
-    # Tüm sınavları birleştir (Sabit OSYM + Kullanıcının eklediği Üniversite sınavları)
-    active_exams = list(OSYM_SINAVLARI.items())
-    for item in user_data.get("ozel_sinavlar", []):
+    # OSYM sınavları ve kullanıcıya özel üniversite sınavlarını birleştir
+    tum_aktif_sinavlar = list(OSYM_SINAVLARI.items())
+    for sinav in user_data.get("ozel_sinavlar", []):
         try:
-            ex_date = datetime.strptime(item["tarih"], "%Y-%m-%d").date()
-            active_exams.append((item["ad"], ex_date))
+            s_tarih = datetime.strptime(sinav["tarih"], "%Y-%m-%d").date()
+            tum_aktif_sinavlar.append((sinav["ad"], s_tarih))
         except: pass
         
-    tcols = st.columns(len(active_exams) if len(active_exams) > 0 else 1)
-    for i, (name, s_date) in enumerate(active_exams):
+    tcols = st.columns(len(tum_aktif_sinavlar) if tum_aktif_sinavlar else 1)
+    for i, (name, s_date) in enumerate(tum_aktif_sinavlar):
         days = (s_date - date.today()).days
         if days >= 0:
             with tcols[i % len(tcols)]:
@@ -314,7 +312,7 @@ else:
 
     tabs = st.tabs(["Rapor", "AI Asistan", "Sınav Merkezi", "Ders Programı", "Görevler", "Arşiv"])
     
-    # TAB 1: GELİŞİM & SINAV YÖNETİMİ
+    # --- TAB 1: RAPOR & SINAV EKLEME ---
     with tabs[0]:
         c1, c2, c3, c4 = st.columns(4)
         c1.markdown(f"<div class='premium-card'><b>Soru</b><h2>{user_data['stats']['soru']}</h2></div>", unsafe_allow_html=True)
@@ -323,38 +321,37 @@ else:
         c4.markdown(f"<div class='premium-card'><b>Dakika</b><h2>{user_data['stats']['dakika']}</h2></div>", unsafe_allow_html=True)
         
         st.divider()
-        st.subheader("🎓 Üniversite Sınavlarımı Yönet")
-        st.info("Kendi vize, final veya diğer sınavlarını buraya ekleyebilirsin. En üstteki takvimde görünecektir.")
+        st.subheader("🎓 Üniversite Sınavlarını Takvime Ekle")
+        st.info("Kendi vize, final veya sunum tarihlerini buraya ekle, en üstteki geri sayım panelinde görünsün.")
         
         sm1, sm2 = st.columns([1, 2])
         with sm1:
-            with st.form("uni_sinav_form"):
-                u_ad = st.text_input("Sınav Adı:", placeholder="Örn: Matematik Vizesi")
-                u_tarih = st.date_input("Sınav Tarihi:", min_value=date.today())
-                if st.form_submit_button("Sınavı Listeye Ekle"):
-                    if u_ad:
-                        user_data["ozel_sinavlar"].append({"ad": u_ad, "tarih": str(u_tarih)})
+            with st.form("uni_sinav_ekle"):
+                yeni_s_ad = st.text_input("Sınav/Görev Adı:", placeholder="Örn: Psikoloji Vizesi")
+                yeni_s_tarih = st.date_input("Tarih:", min_value=date.today())
+                if st.form_submit_button("Takvime İşle"):
+                    if yeni_s_ad:
+                        user_data["ozel_sinavlar"].append({"ad": yeni_s_ad, "tarih": str(yeni_s_tarih)})
                         veritabanini_kaydet(st.session_state.db)
-                        st.success(f"{u_ad} eklendi!")
+                        st.success("Sınav takvime eklendi!")
                         st.rerun()
-        
         with sm2:
-            st.write("**Ekli Üniversite Sınavların:**")
+            st.write("**Eklediğin Özel Sınavlar:**")
             for idx, ex in enumerate(user_data.get("ozel_sinavlar", [])):
                 cx1, cx2 = st.columns([4, 1])
-                cx1.write(f"📌 {ex['ad']} - {ex['tarih']}")
-                if cx2.button("Sil", key=f"del_ex_{idx}"):
+                cx1.write(f"📌 {ex['ad']} ({ex['tarih']})")
+                if cx2.button("Sil", key=f"sinav_sil_{idx}"):
                     user_data["ozel_sinavlar"].pop(idx)
                     veritabanini_kaydet(st.session_state.db)
                     st.rerun()
 
-    # TAB 2: AI (Üniversite Dersleri buradaki listeye eklendi)
+    # --- TAB 2: AI ASİSTAN ---
     with tabs[1]:
         st.subheader("Akıllı Ders Asistanı")
         ai_c1, ai_c2 = st.columns([1, 2])
         ders = ai_c1.selectbox("Ders Seçimi:", DERS_LISTESI, key="ai_lesson")
         gorev = ai_c1.radio("İşlem:", ["Özetle", "Anlat", "Soru Hazırla"])
-        konu = ai_c2.text_area("İncelenecek Konu:", placeholder="Örn: Trablusgarp Savaşı nedenleri veya Diferansiyel Denklemler...")
+        konu = ai_c2.text_area("İncelenecek Konu:", placeholder="Örn: Hücre bölünmesi veya Diferansiyel Denklemler...")
         if ai_c2.button("Sorgula") and konu:
             with st.spinner("Analiz yapılıyor..."):
                 model = genai.GenerativeModel(kullanilacak_model)
@@ -363,7 +360,7 @@ else:
                 user_data["kutuphane"].append({"tarih": str(date.today()), "baslik": konu[:30], "icerik": res})
                 veritabanini_kaydet(st.session_state.db)
 
-    # TAB 3: SINAV
+    # --- TAB 3: SINAV MERKEZİ ---
     with tabs[2]:
         if st.session_state.sinav_durumu == "bekliyor":
             st.subheader("Yeni Sınav")
@@ -408,7 +405,7 @@ else:
                 st.session_state.sinav_durumu = "bekliyor"
                 st.rerun()
 
-    # TAB 4: PROGRAM
+    # --- TAB 4: DERS PROGRAMI ---
     with tabs[3]:
         st.subheader("Akademik Takvim")
         pcols = st.columns(7)
@@ -419,7 +416,7 @@ else:
             veritabanini_kaydet(st.session_state.db)
             st.success("Güncellendi.")
 
-    # TAB 5: GÖREVLER
+    # --- TAB 5: GÖREVLER ---
     with tabs[4]:
         st.subheader("Görevler")
         nt = st.text_input("Yeni Görev:")
@@ -439,7 +436,7 @@ else:
                 veritabanini_kaydet(st.session_state.db)
                 st.rerun()
 
-    # TAB 6: ARŞİV
+    # --- TAB 6: ARŞİV ---
     with tabs[5]:
         st.subheader("Dokümanlar")
         for i, item in enumerate(reversed(user_data["kutuphane"])):
