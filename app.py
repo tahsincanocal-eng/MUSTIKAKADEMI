@@ -33,8 +33,9 @@ GIZLI_DAVET_KODU = "MUSTİK0151"
 ONAYLI_KULLANICILAR = [
     "tahsincanocal@gmail.com",
     "bayrampinarzumra@gmail.com",
-    "mehmet4773@gmail.com",
-    "ipekbirisi321@gmail.com"
+    "mehmetkurt4773998@gmail.com",
+    "ipekbirisi321@gmail.com",
+    "
 ]
 
 DERS_LISTESI = [
@@ -540,4 +541,5 @@ else:
                     if st.button("Belgeyi Sil", key=f"arch_del_{i}"):
                         user_data["kutuphane"].remove(item)
                         veritabanini_kaydet(st.session_state.db)
+
                         st.rerun()
